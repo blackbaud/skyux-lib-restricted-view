@@ -1,6 +1,6 @@
 {
   "name": "blackbaud-skyux-lib-restricted-view",
-  "version": "1.0.0",
+  "version": "1.0.0-rc.1",
   "description": "Single-page-application for skyux-lib-restricted-view",
   "main": "bundles/bundle.umd.js",
   "module": "index.ts",
