@@ -1,6 +1,10 @@
-import { expect } from '@blackbaud/skyux-builder/runtime/testing/browser';
+import {
+  expect
+} from '@blackbaud/skyux-builder/runtime/testing/browser';
 
-import { RestrictedViewModule } from './restricted-view.module';
+import {
+  RestrictedViewModule
+} from './restricted-view.module';
 
 describe('RestrictedViewModule', () => {
   it('should export', () => {

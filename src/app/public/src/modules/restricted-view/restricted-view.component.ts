@@ -1,5 +1,10 @@
-import { Component } from '@angular/core';
-import { RestrictedViewAuthService } from './auth.service';
+import {
+  Component
+} from '@angular/core';
+
+import {
+  RestrictedViewAuthService
+} from './auth.service';
 
 @Component({
   selector: 'skyux-restricted-view',

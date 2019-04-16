@@ -1,7 +1,18 @@
-import { Injectable } from '@angular/core';
-import { BBAuthGetTokenArgs } from '@blackbaud/auth-client';
-import { BehaviorSubject } from 'rxjs';
-import { SkyAuthTokenProvider } from '@blackbaud/skyux-builder/runtime';
+import {
+  Injectable
+} from '@angular/core';
+
+import {
+  BBAuthGetTokenArgs
+} from '@blackbaud/auth-client';
+
+import {
+  BehaviorSubject
+} from 'rxjs';
+
+import {
+  SkyAuthTokenProvider
+} from '@blackbaud/skyux-builder/runtime';
 
 const jwtDecode = require('jwt-decode');
 

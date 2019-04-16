@@ -1,4 +1,6 @@
-import { RestrictedViewAuthService } from './auth.service';
+import {
+  RestrictedViewAuthService
+} from './auth.service';
 
 describe('RestrictedViewAuthService', () => {
   let authService: RestrictedViewAuthService;
@@ -40,7 +42,7 @@ describe('RestrictedViewAuthService', () => {
     });
   });
 
-  it('should not authenticate when JWT does not contain valid 1bb.perms', () => {
+  it('should not authenticate when JWT contains invalid 1bb.perms', () => {
     mockAuthTokenProvider = {
       getToken(args: any) {
         return Promise.resolve(true);
@@ -59,7 +61,7 @@ describe('RestrictedViewAuthService', () => {
     });
   });
 
-  it('should not authenticate', () => {
+  it('should not authenticate if call to get token fails', () => {
     mockAuthTokenProvider = {
       getToken(args: any) {
         return Promise.reject(false);

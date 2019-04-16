@@ -1,8 +1,22 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RestrictedViewAuthService } from './auth.service';
-import { RestrictedViewComponent } from './restricted-view.component';
-import { RestrictedViewDirective } from './restricted-view.directive';
+import {
+  NgModule
+} from '@angular/core';
+
+import {
+  CommonModule
+} from '@angular/common';
+
+import {
+  RestrictedViewAuthService
+} from './auth.service';
+
+import {
+  RestrictedViewComponent
+} from './restricted-view.component';
+
+import {
+  RestrictedViewDirective
+} from './restricted-view.directive';
 
 @NgModule({
   declarations: [

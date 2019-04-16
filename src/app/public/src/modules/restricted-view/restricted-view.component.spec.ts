@@ -1,24 +1,46 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { expect } from '@blackbaud/skyux-builder/runtime/testing/browser';
-import { RestrictedViewComponent } from './restricted-view.component';
-import { Observable } from 'rxjs';
-import { RestrictedViewAuthService } from './auth.service';
+import {
+  ComponentFixture,
+  TestBed
+} from '@angular/core/testing';
+
+import {
+  expect
+} from '@blackbaud/skyux-builder/runtime/testing/browser';
+
+import {
+  BehaviorSubject
+} from 'rxjs';
+
+import {
+  RestrictedViewAuthService
+} from './auth.service';
+
+import {
+  RestrictedViewTestComponent
+} from './fixtures/restricted-view.component.fixture';
+
+import {
+  RestrictedViewModule
+} from './restricted-view.module';
 
 class MockAuth {
-  public isAuthenticated = Observable.of(true);
+  public isAuthenticated = new BehaviorSubject(true);
 }
 
 describe('RestrictedViewComponent', () => {
-  let component: RestrictedViewComponent;
-  let fixture: ComponentFixture<RestrictedViewComponent>;
+  let component: RestrictedViewTestComponent;
+  let fixture: ComponentFixture<RestrictedViewTestComponent>;
   let mockAuth: any;
 
   beforeEach(() => {
     mockAuth = new MockAuth();
 
     TestBed.configureTestingModule({
+      imports: [
+        RestrictedViewModule
+      ],
       declarations: [
-        RestrictedViewComponent
+        RestrictedViewTestComponent
       ],
       providers: [
         { provide: RestrictedViewAuthService, useValue: mockAuth }
@@ -26,7 +48,7 @@ describe('RestrictedViewComponent', () => {
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RestrictedViewComponent);
+    fixture = TestBed.createComponent(RestrictedViewTestComponent);
     component = fixture.componentInstance;
   });
 
@@ -34,7 +56,17 @@ describe('RestrictedViewComponent', () => {
     expect(fixture).toExist();
   });
 
-  it('should authenticate', () => {
-    expect(component.isAuthenticated).toBeTruthy();
+  it('should display content if the user is authenticated', () => {
+    fixture.detectChanges();
+    const element = fixture.elementRef.nativeElement.querySelector('p');
+    expect(element).toBeTruthy();
+  });
+
+  it('should not display content if the user is not authenticated', () => {
+    mockAuth.isAuthenticated.next(false);
+
+    fixture.detectChanges();
+    const element = fixture.elementRef.nativeElement.querySelector('p');
+    expect(element).not.toBeTruthy();
   });
 });

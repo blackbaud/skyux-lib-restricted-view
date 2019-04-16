@@ -1,5 +1,12 @@
-import { Directive, TemplateRef, ViewContainerRef } from '@angular/core';
-import { RestrictedViewAuthService } from './auth.service';
+import {
+  Directive,
+  TemplateRef,
+  ViewContainerRef
+} from '@angular/core';
+
+import {
+  RestrictedViewAuthService
+} from './auth.service';
 
 @Directive({
   selector: '[skyuxRestrictedView]'

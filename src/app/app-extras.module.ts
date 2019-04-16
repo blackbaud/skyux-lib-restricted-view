@@ -3,16 +3,13 @@ import {
 } from '@angular/core';
 
 import {
-  RestrictedViewModule
+  RestrictedViewLibraryModule
 } from './public';
 
 // Specify entry components, module-level providers, etc. here.
 @NgModule({
-  imports: [
-    RestrictedViewModule
-  ],
   exports: [
-    RestrictedViewModule
+    RestrictedViewLibraryModule
   ],
   providers: [],
   entryComponents: []
