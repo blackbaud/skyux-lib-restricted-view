@@ -1,0 +1,10 @@
+{
+  "name": "skyux-lib-restricted-view",
+  "mode": "easy",
+  "compileMode": "aot",
+  "appSettings": {
+    "myLibrary": {
+      "name": "skyux-lib-restricted-view"
+    }
+  }
+}

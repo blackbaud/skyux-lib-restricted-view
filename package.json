@@ -1,0 +1,34 @@
+{
+  "name": "blackbaud-skyux-lib-restricted-view",
+  "version": "1.0.0",
+  "description": "Single-page-application for skyux-lib-restricted-view",
+  "main": "bundles/bundle.umd.js",
+  "module": "index.ts",
+  "engines": {
+    "node": ">=6.11.1"
+  },
+  "scripts": {
+    "skyux": "skyux",
+    "test": "skyux test && skyux e2e && skyux build && npm run build",
+    "build": "skyux build-public-library",
+    "start": "skyux serve"
+  },
+  "keywords": [],
+  "author": "Blackbaud",
+  "license": "ISC",
+  "peerDependencies": {
+    "@blackbaud/skyux": "^2.47.0"
+  },
+  "dependencies": {
+    "jwt-decode": "^2.2.0"
+  },
+  "devDependencies": {
+    "@blackbaud/skyux-builder": "1.33.1",
+    "@blackbaud/skyux-lib-testing": "1.0.0",
+    "@blackbaud/skyux": "2.47.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blackbaud/skyux-restricted-view"
+  }
+}
