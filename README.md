@@ -1,4 +1,4 @@
-# skyux-template-library
+# skyux-restricted-view
 
 ### Template for SKY UX component libraries
 
