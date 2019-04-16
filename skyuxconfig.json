@@ -1,4 +1,5 @@
 {
+  "$schema": "./node_modules/@skyux/config/skyuxconfig-schema.json",
   "name": "skyux-lib-restricted-view",
   "mode": "easy",
   "compileMode": "aot",
@@ -6,5 +7,10 @@
     "myLibrary": {
       "name": "skyux-lib-restricted-view"
     }
+  },
+  "app": {
+    "styles": [
+      "@skyux/theme/css/sky.css"
+    ]
   }
 }

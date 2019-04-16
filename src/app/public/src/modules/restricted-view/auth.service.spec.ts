@@ -14,7 +14,7 @@ describe('RestrictedViewAuthService', () => {
     };
     authService = new RestrictedViewAuthService(mockAuthTokenProvider as any);
     spyOn(authService.isAuthenticated, 'getValue').and.callThrough();
-    spyOn(authService['auth'], 'getToken').and.returnValue(Promise.resolve()).and.callThrough();
+    spyOn(authService['auth'], 'getToken').and.returnValue(Promise.resolve('')).and.callThrough();
     spyOn<any>(authService, 'decode').and.returnValue({
       '1bb.perms': 1
     });
@@ -33,7 +33,7 @@ describe('RestrictedViewAuthService', () => {
     };
     authService = new RestrictedViewAuthService(mockAuthTokenProvider as any);
     spyOn(authService.isAuthenticated, 'getValue').and.callThrough();
-    spyOn(authService['auth'], 'getToken').and.returnValue(Promise.resolve()).and.callThrough();
+    spyOn(authService['auth'], 'getToken').and.returnValue(Promise.resolve('')).and.callThrough();
     spyOn<any>(authService, 'decode').and.returnValue({});
     authService.isAuthenticated.subscribe(next => {
       if (next) {
@@ -50,7 +50,7 @@ describe('RestrictedViewAuthService', () => {
     };
     authService = new RestrictedViewAuthService(mockAuthTokenProvider as any);
     spyOn(authService.isAuthenticated, 'getValue').and.callThrough();
-    spyOn(authService['auth'], 'getToken').and.returnValue(Promise.resolve()).and.callThrough();
+    spyOn(authService['auth'], 'getToken').and.returnValue(Promise.resolve('')).and.callThrough();
     spyOn<any>(authService, 'decode').and.returnValue({
       '1bb.perms': 'invalid'
     });
@@ -69,7 +69,7 @@ describe('RestrictedViewAuthService', () => {
     };
     authService = new RestrictedViewAuthService(mockAuthTokenProvider as any);
     spyOn(authService.isAuthenticated, 'getValue').and.callThrough();
-    spyOn(authService['auth'], 'getToken').and.returnValue({res: undefined, err: {}}).and.callThrough();
+    spyOn(authService['auth'], 'getToken').and.returnValue(Promise.reject('')).and.callThrough();
     expect(authService.isAuthenticated.getValue).not.toHaveBeenCalled();
   });
 });

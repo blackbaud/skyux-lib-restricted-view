@@ -12,7 +12,7 @@ import {
 
 import {
   SkyAuthTokenProvider
-} from '@blackbaud/skyux-builder/runtime';
+} from '@skyux/http';
 
 const jwtDecode = require('jwt-decode');
 
