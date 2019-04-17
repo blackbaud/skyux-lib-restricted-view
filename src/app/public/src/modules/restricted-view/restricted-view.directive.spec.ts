@@ -47,7 +47,6 @@ class MockViewContainer {
 }
 
 describe('RestrictedViewDirective', () => {
-  let component: RestrictedViewTestComponent;
   let fixture: ComponentFixture<RestrictedViewTestComponent>;
   let directiveElement: any;
   let mockAuth: any;
@@ -77,17 +76,16 @@ describe('RestrictedViewDirective', () => {
       .compileComponents();
 
     fixture = TestBed.createComponent(RestrictedViewTestComponent);
-    component = fixture.componentInstance;
   });
 
   it('should display content if user is authenticated', () => {
-    directiveElement = fixture.debugElement.query(By.css('div'));
+    directiveElement = fixture.debugElement.query(By.css('.skyux-restricted-view'));
     expect(directiveElement).toBeTruthy();
   });
 
   it('should not display content if use is not authenticated', () => {
     mockAuth.isAuthenticated.next(false);
-    directiveElement = fixture.debugElement.query(By.css('div'));
+    directiveElement = fixture.debugElement.query(By.css('.skyux-restricted-view'));
     expect(directiveElement).not.toBeTruthy();
   });
 });

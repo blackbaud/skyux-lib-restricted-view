@@ -28,7 +28,6 @@ class MockAuth {
 }
 
 describe('RestrictedViewComponent', () => {
-  let component: RestrictedViewTestComponent;
   let fixture: ComponentFixture<RestrictedViewTestComponent>;
   let mockAuth: any;
 
@@ -49,7 +48,6 @@ describe('RestrictedViewComponent', () => {
     .compileComponents();
 
     fixture = TestBed.createComponent(RestrictedViewTestComponent);
-    component = fixture.componentInstance;
   });
 
   it('should render the component', () => {
