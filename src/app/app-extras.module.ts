@@ -2,19 +2,19 @@ import {
   NgModule
 } from '@angular/core';
 
-import {
-  RestrictedViewLibraryModule
-} from './public';
-
 // Specify entry components, module-level providers, etc. here.
 import {
   AppSkyModule
 } from './app-sky.module';
 
+import {
+  RestrictedViewModule
+} from './public/modules/restricted-view/restricted-view.module';
+
 @NgModule({
   exports: [
     AppSkyModule,
-    RestrictedViewLibraryModule
+    RestrictedViewModule
   ],
   providers: [],
   entryComponents: []

@@ -1,34 +1,29 @@
 # skyux-restricted-view
 
-### Template for SKY UX component libraries
+This library allows Blackbaud internal users to hide content in their SPAs from unauthenticated users. The intent here is to create a more targeted experience for users consuming Blackbaud documentation. To use the library you can either wrap your restricted content in `skyux-restricted-view` tags, or add the `skyuxRestrictedView` attribute to your restricted element. Read the [official documentation]() for more information.
 
-## Getting Started
-- Add modules to **/src/app/public/src/modules**. (There is a sample module already created for you.) It is good practice to prefix every module, component, and provider you create. In this case, `Library` serves as the prefix. You can use a different prefix, as long as it is consistent (for example, `StacheModule`).
-- Each module you create will need to be exported by the "Library" module, located here: **/src/app/public/src/library.module.ts**. You should see the `LibrarySampleModule` listed in the exports.
-- In the **/src/app/public/src/modules/shared** folder, you will find a `LibraryConfigService`. This is a provider that will allow your modules to access the contents of **skyuxconfig.json**. You can add your module's configuration to the `appSettings.myLibrary` section of the config.
+## Reporting Bugs or submitting issues
 
-For a live example of a SKY UX component library, check out the [`StacheModule` source code](https://github.com/blackbaud/stache2).
+All feature requests, bug reports, or issues should be filed within the [Stache issues](https://github.com/blackbaud/stache2/issues) in the main Stache repository.
 
-## Install dependencies and view the example
+#### Install dependencies
 
 ```
 npm install
-npm start
 ```
 
-## Bundle your library:
+#### Serve the SPA
 
 ```
-npm run build
+skyux serve
 ```
 
-## Test your library:
+#### Test the components
 
 ```
-npm test
+skyux test
 ```
 
-## Deploying to npmjs.org (or an internal NPM stream):
+## Contributing
 
-- Update the `name` property in **package.json** to the name of your registered module.
-- Publish the contents of the bundled **dist** folder.
+Read our [contribution guidelines](https://github.com/blackbaud/stache2/blob/master/CONTRIBUTING.md).
