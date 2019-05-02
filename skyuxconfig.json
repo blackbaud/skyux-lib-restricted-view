@@ -8,6 +8,11 @@
       "name": "skyux-lib-restricted-view"
     }
   },
+  "testSettings": {
+    "unit": {
+      "browserSet": "paranoid"
+    }
+  },
   "app": {
     "styles": [
       "@skyux/theme/css/sky.css"

@@ -4,11 +4,11 @@ import {
 } from '@angular/core/testing';
 
 import {
-  RestrictedViewDirective
+  SkyRestrictedViewDirective
 } from './restricted-view.directive';
 
 import {
-  RestrictedViewAuthService
+  SkyRestrictedViewAuthService
 } from './auth.service';
 
 import {
@@ -33,7 +33,7 @@ import {
 } from '@skyux/core';
 
 import {
-  RestrictedViewModule
+  SkyRestrictedViewModule
 } from './restricted-view.module';
 
 class MockViewContainer {
@@ -46,7 +46,7 @@ class MockViewContainer {
   }
 }
 
-describe('RestrictedViewDirective', () => {
+describe('SkyRestrictedViewDirective', () => {
   let fixture: ComponentFixture<RestrictedViewTestComponent>;
   let directiveElement: any;
   let mockAuth: any;
@@ -60,16 +60,16 @@ describe('RestrictedViewDirective', () => {
 
     TestBed.configureTestingModule({
       imports: [
-        RestrictedViewModule
+        SkyRestrictedViewModule
       ],
       declarations: [
         RestrictedViewTestComponent
       ],
       providers: [
-        RestrictedViewDirective,
+        SkyRestrictedViewDirective,
         TemplateRef,
         SkyAppWindowRef,
-        { provide: RestrictedViewAuthService, useValue: mockAuth },
+        { provide: SkyRestrictedViewAuthService, useValue: mockAuth },
         { provide: ViewContainerRef, useValue: mockViewContainer }
       ]
     })

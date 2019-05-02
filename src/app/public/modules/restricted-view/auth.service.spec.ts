@@ -1,9 +1,9 @@
 import {
-  RestrictedViewAuthService
+  SkyRestrictedViewAuthService
 } from './auth.service';
 
-describe('RestrictedViewAuthService', () => {
-  let authService: RestrictedViewAuthService;
+describe('SkyRestrictedViewAuthService', () => {
+  let authService: SkyRestrictedViewAuthService;
   let mockAuthTokenProvider: any;
 
   it('should authenticate when JWT contains 1bb.perms', () => {
@@ -12,7 +12,7 @@ describe('RestrictedViewAuthService', () => {
         return Promise.resolve(true);
       }
     };
-    authService = new RestrictedViewAuthService(mockAuthTokenProvider as any);
+    authService = new SkyRestrictedViewAuthService(mockAuthTokenProvider as any);
     spyOn(authService.isAuthenticated, 'getValue').and.callThrough();
     spyOn(authService['auth'], 'getToken').and.returnValue(Promise.resolve('')).and.callThrough();
     spyOn<any>(authService, 'decode').and.returnValue({
@@ -22,7 +22,7 @@ describe('RestrictedViewAuthService', () => {
       if (next) {
         expect(authService.isAuthenticated.getValue()).toBeTruthy();
       }
-    });
+    }).unsubscribe();
   });
 
   it('should not authenticate when JWT does not contain 1bb.perms', () => {
@@ -31,7 +31,7 @@ describe('RestrictedViewAuthService', () => {
         return Promise.resolve(true);
       }
     };
-    authService = new RestrictedViewAuthService(mockAuthTokenProvider as any);
+    authService = new SkyRestrictedViewAuthService(mockAuthTokenProvider as any);
     spyOn(authService.isAuthenticated, 'getValue').and.callThrough();
     spyOn(authService['auth'], 'getToken').and.returnValue(Promise.resolve('')).and.callThrough();
     spyOn<any>(authService, 'decode').and.returnValue({});
@@ -39,7 +39,7 @@ describe('RestrictedViewAuthService', () => {
       if (next) {
         expect(authService.isAuthenticated.getValue()).not.toBeTruthy();
       }
-    });
+    }).unsubscribe();
   });
 
   it('should not authenticate when JWT contains invalid 1bb.perms', () => {
@@ -48,7 +48,7 @@ describe('RestrictedViewAuthService', () => {
         return Promise.resolve(true);
       }
     };
-    authService = new RestrictedViewAuthService(mockAuthTokenProvider as any);
+    authService = new SkyRestrictedViewAuthService(mockAuthTokenProvider as any);
     spyOn(authService.isAuthenticated, 'getValue').and.callThrough();
     spyOn(authService['auth'], 'getToken').and.returnValue(Promise.resolve('')).and.callThrough();
     spyOn<any>(authService, 'decode').and.returnValue({
@@ -58,7 +58,7 @@ describe('RestrictedViewAuthService', () => {
       if (next) {
         expect(authService.isAuthenticated.getValue()).not.toBeTruthy();
       }
-    });
+    }).unsubscribe();
   });
 
   it('should not authenticate if call to get token fails', () => {
@@ -67,7 +67,7 @@ describe('RestrictedViewAuthService', () => {
         return Promise.reject(false);
       }
     };
-    authService = new RestrictedViewAuthService(mockAuthTokenProvider as any);
+    authService = new SkyRestrictedViewAuthService(mockAuthTokenProvider as any);
     spyOn(authService.isAuthenticated, 'getValue').and.callThrough();
     spyOn(authService['auth'], 'getToken').and.returnValue(Promise.reject('')).and.callThrough();
     expect(authService.isAuthenticated.getValue).not.toHaveBeenCalled();

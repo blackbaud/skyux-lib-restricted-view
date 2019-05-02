@@ -8,13 +8,13 @@ import {
 } from './app-sky.module';
 
 import {
-  RestrictedViewModule
+  SkyRestrictedViewModule
 } from './public/modules/restricted-view/restricted-view.module';
 
 @NgModule({
   exports: [
     AppSkyModule,
-    RestrictedViewModule
+    SkyRestrictedViewModule
   ],
   providers: [],
   entryComponents: []

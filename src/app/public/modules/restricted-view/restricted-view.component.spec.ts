@@ -12,7 +12,7 @@ import {
 } from 'rxjs';
 
 import {
-  RestrictedViewAuthService
+  SkyRestrictedViewAuthService
 } from './auth.service';
 
 import {
@@ -20,14 +20,14 @@ import {
 } from './fixtures/restricted-view.component.fixture';
 
 import {
-  RestrictedViewModule
+  SkyRestrictedViewModule
 } from './restricted-view.module';
 
 class MockAuth {
   public isAuthenticated = new BehaviorSubject(true);
 }
 
-describe('RestrictedViewComponent', () => {
+describe('SkyRestrictedViewComponent', () => {
   let fixture: ComponentFixture<RestrictedViewTestComponent>;
   let mockAuth: any;
 
@@ -36,13 +36,13 @@ describe('RestrictedViewComponent', () => {
 
     TestBed.configureTestingModule({
       imports: [
-        RestrictedViewModule
+        SkyRestrictedViewModule
       ],
       declarations: [
         RestrictedViewTestComponent
       ],
       providers: [
-        { provide: RestrictedViewAuthService, useValue: mockAuth }
+        { provide: SkyRestrictedViewAuthService, useValue: mockAuth }
       ]
     })
     .compileComponents();

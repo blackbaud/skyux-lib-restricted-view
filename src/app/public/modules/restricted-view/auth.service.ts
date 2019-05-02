@@ -17,7 +17,7 @@ import {
 const jwtDecode = require('jwt-decode');
 
 @Injectable()
-export class RestrictedViewAuthService  {
+export class SkyRestrictedViewAuthService  {
 
   public isAuthenticated = new BehaviorSubject<boolean>(false);
   private decode: any = jwtDecode;

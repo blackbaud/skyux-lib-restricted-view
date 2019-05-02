@@ -1,20 +1,35 @@
 import {
-  Component
+  Component, OnDestroy
 } from '@angular/core';
 
 import {
-  RestrictedViewAuthService
+  SkyRestrictedViewAuthService
 } from './auth.service';
 
+import {
+  Subject
+} from 'rxjs';
+
+import 'rxjs/add/operator/takeUntil';
+
 @Component({
-  selector: 'skyux-restricted-view',
+  selector: 'sky-restricted-view',
   templateUrl: './restricted-view.component.html'
 })
-export class RestrictedViewComponent {
+export class SkyRestrictedViewComponent implements OnDestroy {
+  public ngUnsubscribe = new Subject();
   public isAuthenticated: boolean = false;
-  constructor(private authService: RestrictedViewAuthService) {
-    this.authService.isAuthenticated.subscribe(isAuthenticated => {
-      this.isAuthenticated = isAuthenticated;
+
+  constructor(private authService: SkyRestrictedViewAuthService) {
+    this.authService.isAuthenticated
+      .takeUntil(this.ngUnsubscribe)
+      .subscribe((isAuthenticated: boolean) => {
+        this.isAuthenticated = isAuthenticated;
     });
+  }
+
+  public ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
  }
