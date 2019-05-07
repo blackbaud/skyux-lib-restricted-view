@@ -64,12 +64,12 @@ describe('SkyRestrictedViewAuthService', () => {
   it('should not authenticate if call to get token fails', () => {
     mockAuthTokenProvider = {
       getToken(args: any) {
-        return Promise.reject(false);
+        return Promise.reject();
       }
     };
     authService = new SkyRestrictedViewAuthService(mockAuthTokenProvider as any);
     spyOn(authService.isAuthenticated, 'getValue').and.callThrough();
-    spyOn(authService['auth'], 'getToken').and.returnValue(Promise.reject('')).and.callThrough();
+    spyOn(authService['auth'], 'getToken').and.callThrough();
     expect(authService.isAuthenticated.getValue).not.toHaveBeenCalled();
   });
 });
