@@ -4,17 +4,12 @@ import {
 } from '@angular/core/testing';
 
 import {
-  TemplateRef,
   ViewContainerRef
 } from '@angular/core';
 
 import {
   By
 } from '@angular/platform-browser';
-
-import {
-  SkyAppWindowRef
-} from '@skyux/core';
 
 import {
   BehaviorSubject
