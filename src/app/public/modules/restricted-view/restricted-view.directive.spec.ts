@@ -4,37 +4,33 @@ import {
 } from '@angular/core/testing';
 
 import {
-  SkyRestrictedViewDirective
-} from './restricted-view.directive';
-
-import {
-  SkyRestrictedViewAuthService
-} from './auth.service';
-
-import {
-  ViewContainerRef,
-  TemplateRef
+  TemplateRef,
+  ViewContainerRef
 } from '@angular/core';
-
-import {
-  RestrictedViewTestComponent
-} from './fixtures/restricted-view.component.fixture';
 
 import {
   By
 } from '@angular/platform-browser';
 
 import {
-  BehaviorSubject
-} from 'rxjs';
-
-import {
   SkyAppWindowRef
 } from '@skyux/core';
 
 import {
-  SkyRestrictedViewModule
-} from './restricted-view.module';
+  BehaviorSubject
+} from 'rxjs';
+
+import {
+  RestrictedViewTestComponent
+} from './fixtures/restricted-view.component.fixture';
+
+import {
+  RestrictedViewFixtureModule
+} from './fixtures/restricted-view.module.fixture';
+
+import {
+  SkyRestrictedViewAuthService
+} from './restricted-view-auth.service';
 
 class MockViewContainer {
   public createEmbeddedView(ref: any) {
@@ -60,20 +56,19 @@ describe('SkyRestrictedViewDirective', () => {
 
     TestBed.configureTestingModule({
       imports: [
-        SkyRestrictedViewModule
-      ],
-      declarations: [
-        RestrictedViewTestComponent
+        RestrictedViewFixtureModule
       ],
       providers: [
-        SkyRestrictedViewDirective,
-        TemplateRef,
-        SkyAppWindowRef,
-        { provide: SkyRestrictedViewAuthService, useValue: mockAuth },
-        { provide: ViewContainerRef, useValue: mockViewContainer }
+        {
+          provide: SkyRestrictedViewAuthService,
+          useValue: mockAuth
+        },
+        {
+          provide: ViewContainerRef,
+          useValue: mockViewContainer
+        }
       ]
-    })
-      .compileComponents();
+    });
 
     fixture = TestBed.createComponent(RestrictedViewTestComponent);
   });

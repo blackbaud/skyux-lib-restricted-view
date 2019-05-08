@@ -1,14 +1,14 @@
 import {
-  NgModule
-} from '@angular/core';
-
-import {
   CommonModule
 } from '@angular/common';
 
 import {
+  NgModule
+} from '@angular/core';
+
+import {
   SkyRestrictedViewAuthService
-} from './auth.service';
+} from './restricted-view-auth.service';
 
 import {
   SkyRestrictedViewComponent
@@ -20,8 +20,8 @@ import {
 
 @NgModule({
   declarations: [
-    SkyRestrictedViewDirective,
-    SkyRestrictedViewComponent
+    SkyRestrictedViewComponent,
+    SkyRestrictedViewDirective
   ],
   imports: [
     CommonModule
@@ -30,8 +30,8 @@ import {
     SkyRestrictedViewAuthService
   ],
   exports: [
-    SkyRestrictedViewDirective,
-    SkyRestrictedViewComponent
+    SkyRestrictedViewComponent,
+    SkyRestrictedViewDirective
   ]
 })
 export class SkyRestrictedViewModule { }
