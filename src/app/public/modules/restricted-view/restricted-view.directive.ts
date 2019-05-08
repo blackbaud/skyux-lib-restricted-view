@@ -14,7 +14,9 @@ import {
   Subject
 } from 'rxjs';
 
-import 'rxjs/add/operator/takeUntil';
+import {
+  takeUntil
+} from 'rxjs/operators';
 
 @Directive({
   selector: '[skyRestrictedView]'
@@ -30,7 +32,7 @@ export class SkyRestrictedViewDirective implements OnDestroy {
   ) {
     this.viewContainer.clear();
     this.authService.isAuthenticated
-      .takeUntil(this.ngUnsubscribe)
+      .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(isAuthenticated => {
         if (isAuthenticated) {
           this.viewContainer.createEmbeddedView(this.templateRef);

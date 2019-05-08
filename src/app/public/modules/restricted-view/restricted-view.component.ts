@@ -10,7 +10,9 @@ import {
   Subject
 } from 'rxjs';
 
-import 'rxjs/add/operator/takeUntil';
+import {
+  takeUntil
+} from 'rxjs/operators';
 
 @Component({
   selector: 'sky-restricted-view',
@@ -22,7 +24,7 @@ export class SkyRestrictedViewComponent implements OnDestroy {
 
   constructor(private authService: SkyRestrictedViewAuthService) {
     this.authService.isAuthenticated
-      .takeUntil(this.ngUnsubscribe)
+    .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((isAuthenticated: boolean) => {
         this.isAuthenticated = isAuthenticated;
     });
