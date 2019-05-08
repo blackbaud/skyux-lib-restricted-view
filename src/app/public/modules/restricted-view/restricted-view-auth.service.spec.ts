@@ -1,6 +1,6 @@
 import {
   SkyRestrictedViewAuthService
-} from './auth.service';
+} from './restricted-view-auth.service';
 
 describe('SkyRestrictedViewAuthService', () => {
   let authService: SkyRestrictedViewAuthService;

@@ -1,14 +1,10 @@
 import {
   Directive,
-  TemplateRef,
-  ViewContainerRef,
+  OnDestroy,
   Renderer2,
-  OnDestroy
+  TemplateRef,
+  ViewContainerRef
 } from '@angular/core';
-
-import {
-  SkyRestrictedViewAuthService
-} from './auth.service';
 
 import {
   Subject
@@ -18,26 +14,33 @@ import {
   takeUntil
 } from 'rxjs/operators';
 
+import {
+  SkyRestrictedViewAuthService
+} from './restricted-view-auth.service';
+
 @Directive({
   selector: '[skyRestrictedView]'
 })
 export class SkyRestrictedViewDirective implements OnDestroy {
-  public ngUnsubscribe = new Subject();
+  private ngUnsubscribe = new Subject<void>();
 
   constructor(
+    private renderer: Renderer2,
     private authService: SkyRestrictedViewAuthService,
     private templateRef: TemplateRef<any>,
-    private viewContainer: ViewContainerRef,
-    private renderer: Renderer2
+    private viewContainer: ViewContainerRef
   ) {
     this.viewContainer.clear();
+
     this.authService.isAuthenticated
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(isAuthenticated => {
         if (isAuthenticated) {
           this.viewContainer.createEmbeddedView(this.templateRef);
+
           const ref: any = this.viewContainer.get(0);
           const directiveElement = ref.rootNodes[0];
+
           this.renderer.addClass(directiveElement, 'skyux-restricted-view');
         } else {
           this.viewContainer.clear();
@@ -45,7 +48,7 @@ export class SkyRestrictedViewDirective implements OnDestroy {
       });
   }
 
-  public ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
   }
