@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/@skyux/config/skyuxconfig-schema.json",
+  "name": "skyux-lib-restricted-view",
+  "mode": "easy",
+  "compileMode": "aot",
+  "appSettings": {
+    "myLibrary": {
+      "name": "skyux-lib-restricted-view"
+    }
+  },
+  "testSettings": {
+    "unit": {
+      "browserSet": "paranoid"
+    }
+  },
+  "app": {
+    "styles": [
+      "@skyux/theme/css/sky.css"
+    ]
+  }
+}
