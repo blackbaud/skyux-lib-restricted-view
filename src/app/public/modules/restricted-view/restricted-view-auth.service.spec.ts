@@ -18,7 +18,6 @@ describe('SkyRestrictedViewAuthService', () => {
     spyOn(authService.isAuthenticated, 'getValue').and.callThrough();
     spyOn(authService['auth'], 'getDecodedToken').and.callThrough();
     authService.isAuthenticated.subscribe(next => {
-      console.log('tst', next);
       if (next !== undefined) {
         if (next === true) {
           expect(authService.isAuthenticated.getValue()).toBeTruthy();
@@ -42,7 +41,6 @@ describe('SkyRestrictedViewAuthService', () => {
     spyOn(authService.isAuthenticated, 'getValue').and.callThrough();
     spyOn(authService['auth'], 'getDecodedToken').and.callThrough();
     authService.isAuthenticated.subscribe(next => {
-      console.log('tst', next);
       if (next !== undefined) {
         expect(authService.isAuthenticated.getValue()).not.toBeTruthy();
       } else {

@@ -31,7 +31,6 @@ export class SkyRestrictedViewAuthService  {
     this.auth
       .getDecodedToken(args)
       .then((token) => {
-        console.log('tkn', token);
         let permissions = token['1bb.perms'];
         if (permissions) {
           if (typeof permissions === 'number') {
