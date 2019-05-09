@@ -14,13 +14,10 @@ import {
   SkyAuthTokenProvider
 } from '@skyux/http';
 
-const jwtDecode = require('jwt-decode');
-
 @Injectable()
 export class SkyRestrictedViewAuthService  {
 
   public isAuthenticated = new BehaviorSubject<boolean>(false);
-  private decode: any = jwtDecode;
 
   constructor(private auth: SkyAuthTokenProvider) {
     this.checkForAuth();
@@ -32,9 +29,10 @@ export class SkyRestrictedViewAuthService  {
     };
 
     this.auth
-      .getToken(args)
+      .getDecodedToken(args)
       .then((token) => {
-        let permissions = this.decode(token)['1bb.perms'];
+        console.log('tkn', token);
+        let permissions = token['1bb.perms'];
         if (permissions) {
           if (typeof permissions === 'number') {
             permissions = [permissions];

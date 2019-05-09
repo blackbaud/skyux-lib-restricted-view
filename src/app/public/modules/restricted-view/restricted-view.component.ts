@@ -7,12 +7,9 @@ import {
 } from './auth.service';
 
 import {
-  Subject
+  Subject,
+  Observable
 } from 'rxjs';
-
-import {
-  takeUntil
-} from 'rxjs/operators';
 
 @Component({
   selector: 'sky-restricted-view',
@@ -20,18 +17,14 @@ import {
 })
 export class SkyRestrictedViewComponent implements OnDestroy {
   public ngUnsubscribe = new Subject();
-  public isAuthenticated: boolean = false;
+  public isAuthenticated: Observable<boolean>;
 
   constructor(private authService: SkyRestrictedViewAuthService) {
-    this.authService.isAuthenticated
-    .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe((isAuthenticated: boolean) => {
-        this.isAuthenticated = isAuthenticated;
-    });
+    this.isAuthenticated = this.authService.isAuthenticated;
   }
 
   public ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
   }
- }
+}
