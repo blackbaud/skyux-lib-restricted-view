@@ -1,10 +1,11 @@
 import {
-  Component, OnDestroy
+  Component,
+  OnDestroy
 } from '@angular/core';
 
 import {
   SkyRestrictedViewAuthService
-} from './auth.service';
+} from './restricted-view-auth.service';
 
 import {
   Subject,
@@ -23,7 +24,7 @@ export class SkyRestrictedViewComponent implements OnDestroy {
     this.isAuthenticated = this.authService.isAuthenticated;
   }
 
-  public ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
   }
