@@ -1,6 +1,6 @@
 {
   "name": "@blackbaud/skyux-lib-restricted-view",
-  "version": "2.0.0-rc.0",
+  "version": "4.0.0",
   "description": "Single-page-application for skyux-lib-restricted-view",
   "scripts": {
     "skyux": "skyux",
@@ -12,10 +12,10 @@
   "author": "Blackbaud",
   "license": "ISC",
   "peerDependencies": {
-    "@angular/common": "^9.0.2",
-    "@angular/core": "^9.0.2",
-    "@blackbaud/auth-client": "^2.22.0",
-    "@skyux/http": "^4.0.0-rc.2"
+    "@angular/common": "^9.1.9",
+    "@angular/core": "^9.1.9",
+    "@blackbaud/auth-client": "^2.25.0",
+    "@skyux/http": "^4.0.0"
   },
   "devDependencies": {
     "@angular/animations": "9.1.9",
