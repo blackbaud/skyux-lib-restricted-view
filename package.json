@@ -15,7 +15,8 @@
     "@angular/common": "^9.1.9",
     "@angular/core": "^9.1.9",
     "@blackbaud/auth-client": "^2.25.0",
-    "@skyux/http": "^4.0.0"
+    "@skyux/http": "^4.0.0",
+    "@skyux/indicators": "^4.0.0"
   },
   "devDependencies": {
     "@angular/animations": "9.1.9",
