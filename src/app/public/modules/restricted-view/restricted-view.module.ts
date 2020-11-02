@@ -7,6 +7,10 @@ import {
 } from '@angular/core';
 
 import {
+  SkyAuthTokenProvider
+} from '@skyux/http';
+
+import {
   SkyAlertModule
 } from '@skyux/indicators';
 
@@ -37,6 +41,7 @@ import {
     SkyAlertModule
   ],
   providers: [
+    SkyAuthTokenProvider,
     SkyRestrictedViewAuthService
   ],
   exports: [

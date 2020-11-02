@@ -19,6 +19,9 @@ const STORAGE_KEY_HAS_BEEN_AUTHENTICATED = 'bb_has_logged_in_as_employee';
 @Injectable()
 export class SkyRestrictedViewAuthService  {
 
+  /**
+   * Indicates if the user is an authenticated Blackbaud user.
+   */
   public isAuthenticated = new BehaviorSubject<boolean>(false);
 
   public get hasBeenAuthenticated(): boolean {
