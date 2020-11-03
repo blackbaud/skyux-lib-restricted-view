@@ -17,7 +17,7 @@ import {
 const STORAGE_KEY_HAS_BEEN_AUTHENTICATED = 'bb_has_logged_in_as_employee';
 
 @Injectable()
-export class SkyRestrictedViewAuthService  {
+export class SkyRestrictedViewAuthService {
 
   /**
    * Indicates if the user is an authenticated Blackbaud user.
@@ -59,13 +59,20 @@ export class SkyRestrictedViewAuthService  {
           if (typeof permissions === 'number') {
             permissions = [permissions];
           }
+
           if (permissions.indexOf(1) > -1) {
             this.setHasBeenAuthenticated();
             this.isAuthenticated.next(true);
+            return;
           }
         }
+        // NOTE: Emitting here allows for the watching of when any response is returned.
+        this.isAuthenticated.next(false);
       },
-      () => {});
+        () => {
+          // NOTE: Emitting here allows for the watching of when any response is returned.
+          this.isAuthenticated.next(false);
+        });
   }
 
   private setHasBeenAuthenticated(): void {
