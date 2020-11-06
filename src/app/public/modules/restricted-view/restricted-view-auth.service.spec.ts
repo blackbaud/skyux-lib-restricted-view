@@ -122,7 +122,7 @@ describe('SkyRestrictedViewAuthService', () => {
         });
       }
     };
-    spyOn(localStorage, 'setItem').and.callThrough();
+    spyOn(Storage.prototype, 'setItem').and.callThrough();
     authService = new SkyRestrictedViewAuthService(mockAuthTokenProvider as any);
     spyOn(authService.isAuthenticated, 'getValue').and.callThrough();
     spyOn(authService['auth'], 'getDecodedToken').and.callThrough();
@@ -130,7 +130,7 @@ describe('SkyRestrictedViewAuthService', () => {
       if (next !== undefined) {
         if (next === true) {
           expect(authService.isAuthenticated.getValue()).toBeTruthy();
-          expect(localStorage.setItem).toHaveBeenCalledWith('bb_has_logged_in_as_employee', '1');
+          expect(Storage.prototype.setItem).toHaveBeenCalledWith('bb_has_logged_in_as_employee', '1');
         }
       } else {
         fail('Subscription failed');
@@ -193,7 +193,7 @@ describe('SkyRestrictedViewAuthService', () => {
         });
       }
     };
-    spyOn(localStorage, 'removeItem').and.callThrough();
+    spyOn(Storage.prototype, 'removeItem').and.callThrough();
     authService = new SkyRestrictedViewAuthService(mockAuthTokenProvider as any);
     spyOn(authService.isAuthenticated, 'getValue').and.callThrough();
     spyOn(authService['auth'], 'getDecodedToken').and.callThrough();
@@ -202,11 +202,11 @@ describe('SkyRestrictedViewAuthService', () => {
         if (next === true) {
           expect(authService.isAuthenticated.getValue()).toBeTruthy();
           expect(authService.hasBeenAuthenticated).toBeTruthy();
-          expect(localStorage.removeItem).not.toHaveBeenCalled();
+          expect(Storage.prototype.removeItem).not.toHaveBeenCalled();
 
           authService.clearHasBeenAuthenticated();
           expect(authService.hasBeenAuthenticated).not.toBeTruthy();
-          expect(localStorage.removeItem).toHaveBeenCalledWith('bb_has_logged_in_as_employee');
+          expect(Storage.prototype.removeItem).toHaveBeenCalledWith('bb_has_logged_in_as_employee');
         }
       } else {
         fail('Subscription failed');
@@ -223,7 +223,7 @@ describe('SkyRestrictedViewAuthService', () => {
         });
       }
     };
-    spyOn(localStorage, 'setItem').and.throwError('Test error');
+    spyOn(Storage.prototype, 'setItem').and.throwError('Test error');
     authService = new SkyRestrictedViewAuthService(mockAuthTokenProvider as any);
     spyOn(authService.isAuthenticated, 'getValue').and.callThrough();
     spyOn(authService['auth'], 'getDecodedToken').and.callThrough();
@@ -248,7 +248,7 @@ describe('SkyRestrictedViewAuthService', () => {
         });
       }
     };
-    spyOn(localStorage, 'getItem').and.throwError('Test error');
+    spyOn(Storage.prototype, 'getItem').and.throwError('Test error');
     authService = new SkyRestrictedViewAuthService(mockAuthTokenProvider as any);
     spyOn(authService.isAuthenticated, 'getValue').and.callThrough();
     spyOn(authService['auth'], 'getDecodedToken').and.callThrough();
@@ -275,7 +275,7 @@ describe('SkyRestrictedViewAuthService', () => {
         });
       }
     };
-    spyOn(localStorage, 'removeItem').and.throwError('Test error');
+    spyOn(Storage.prototype, 'removeItem').and.throwError('Test error');
     authService = new SkyRestrictedViewAuthService(mockAuthTokenProvider as any);
     spyOn(authService.isAuthenticated, 'getValue').and.callThrough();
     spyOn(authService['auth'], 'getDecodedToken').and.callThrough();
