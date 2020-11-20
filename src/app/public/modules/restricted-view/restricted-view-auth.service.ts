@@ -66,13 +66,11 @@ export class SkyRestrictedViewAuthService {
             return;
           }
         }
-        // NOTE: Emitting here allows for the watching of when any response is returned.
         this.isAuthenticated.next(false);
       },
-        () => {
-          // NOTE: Emitting here allows for the watching of when any response is returned.
+      () => {
           this.isAuthenticated.next(false);
-        });
+      });
   }
 
   private setHasBeenAuthenticated(): void {
