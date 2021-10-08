@@ -43,7 +43,7 @@
     "@skyux/omnibar-interop": "4.0.1",
     "@skyux/popovers": "4.7.0",
     "@skyux/router": "4.3.0",
-    "@skyux/theme": "4.22.0",
+    "@skyux/theme": "4.22.1",
     "codelyzer": "5.2.2",
     "rxjs": "6.6.7",
     "ts-node": "8.3.0",
