@@ -1,0 +1,192 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "restricted-view": {
+      "projectType": "library",
+      "root": "projects/restricted-view",
+      "sourceRoot": "projects/restricted-view/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/restricted-view/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/restricted-view/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/restricted-view/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/restricted-view/src/test.ts",
+            "tsConfig": "projects/restricted-view/tsconfig.spec.json",
+            "karmaConfig": "projects/restricted-view/karma.conf.js",
+            "codeCoverage": true,
+            "codeCoverageExclude": [
+              "**/fixtures/**"
+            ],
+            "styles": [
+              "@skyux/theme/css/sky.css",
+              "@skyux/theme/css/themes/modern/styles.css"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/restricted-view/**/*.ts",
+              "projects/restricted-view/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "restricted-view-showcase": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/restricted-view-showcase",
+      "sourceRoot": "projects/restricted-view-showcase/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/restricted-view-showcase",
+            "index": "projects/restricted-view-showcase/src/index.html",
+            "main": "projects/restricted-view-showcase/src/main.ts",
+            "polyfills": "projects/restricted-view-showcase/src/polyfills.ts",
+            "tsConfig": "projects/restricted-view-showcase/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/restricted-view-showcase/src/favicon.ico",
+              "projects/restricted-view-showcase/src/assets"
+            ],
+            "styles": [
+              "node_modules/@skyux/theme/css/sky.css",
+              "node_modules/@skyux/theme/css/themes/modern/styles.css",
+              "projects/restricted-view-showcase/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/restricted-view-showcase/src/environments/environment.ts",
+                  "with": "projects/restricted-view-showcase/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "restricted-view-showcase:build:production"
+            },
+            "development": {
+              "browserTarget": "restricted-view-showcase:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "restricted-view-showcase:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/restricted-view-showcase/src/test.ts",
+            "polyfills": "projects/restricted-view-showcase/src/polyfills.ts",
+            "tsConfig": "projects/restricted-view-showcase/tsconfig.spec.json",
+            "karmaConfig": "projects/restricted-view-showcase/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/restricted-view-showcase/src/favicon.ico",
+              "projects/restricted-view-showcase/src/assets"
+            ],
+            "styles": [
+              "projects/restricted-view-showcase/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/restricted-view-showcase/**/*.ts",
+              "projects/restricted-view-showcase/**/*.html"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "restricted-view",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
+}
